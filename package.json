@@ -2,12 +2,18 @@
   "name": "redux-bits",
   "version": "0.0.5",
   "description": "modular redux bits",
-  "keywords": "redux react modular bits",
+  "keywords": [
+    "modular",
+    "redux",
+    "bits",
+    "react",
+    "render props"
+  ],
   "main": "dist/index.js",
   "module": "src/index.js",
   "sideEffects": false,
   "repository": "https://github.com/cl1ck/redux-bits.git",
-  "author": "Michel Hofmann <rdg@cl1ck0ne.net>",
+  "author": "Michel Hofmann <info@cl1ck0ne.net>",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && babel src --out-dir dist",
@@ -17,6 +23,7 @@
   },
   "dependencies": {
     "immer": "^1.2.1",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
@@ -24,7 +31,6 @@
     "snake-case": "^2.1.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^16.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -36,6 +42,7 @@
     "enzyme-redux": "^0.2.1",
     "enzyme-to-json": "^3.3.3",
     "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
