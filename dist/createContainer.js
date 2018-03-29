@@ -12,6 +12,10 @@ var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _immer = require('immer');
 
 var _immer2 = _interopRequireDefault(_immer);
@@ -59,6 +63,10 @@ var createContainer = function createContainer(name, actions) {
   var Container = function Container(props) {
     return props.children(props);
   };
+  Container.propTypes = {
+    children: _propTypes2.default.func.isRequired
+  };
+
   var mapStateToProps = createMapStateToProps(name, selectors);
   var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return (0, _redux.bindActionCreators)(actions, dispatch);
