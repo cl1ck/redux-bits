@@ -1,0 +1,48 @@
+{
+  "name": "redux-bits",
+  "version": "0.0.5",
+  "description": "modular redux bits",
+  "keywords": "redux react modular bits",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "sideEffects": false,
+  "repository": "https://github.com/cl1ck/redux-bits.git",
+  "author": "Michel Hofmann <rdg@cl1ck0ne.net>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && babel src --out-dir dist",
+    "test": "jest --config ./test/config.js",
+    "test:watch": "jest --bail --config ./test/config.js --watch",
+    "lint": "eslint ./src ./test"
+  },
+  "dependencies": {
+    "immer": "^1.2.1",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "snake-case": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-redux": "^0.2.1",
+    "enzyme-to-json": "^3.3.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "flux-standard-action": "^2.0.1",
+    "jest": "^22.4.3",
+    "react-dom": "^16.2.0",
+    "redux-test-utils": "^0.2.2"
+  }
+}
