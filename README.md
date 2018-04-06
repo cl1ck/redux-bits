@@ -54,7 +54,7 @@ export const reducers = {
 // Selectors
 // For memoized or more complex selectors you might want to use reselect.
 export const selectors = {
-  foo: state => state.foo.toUpperCase(),
+  fooBar: state => state.foo ? state.bar.toUpperCase() : state.bar.toLowerCase(),
 };
 
 ```
@@ -148,10 +148,10 @@ import MyTestBit from 'bits/myTestBit';
 
 export default () => (
 <div>
-  <MyTestBit selector='foo'>
-    {({ foo, fooAction }) => (
-      <p>Foo: {foo}</p>
-      <a onClick={fooAction}>Foo action</a>
+  <MyTestBit selector='fooBar'>
+    {({ fooBar, fooAction }) => (
+      <p>Foo: {fooBar}</p>
+      <a onClick={fooAction}>action creators are still available</a>
     )}
   </MyTestBit>
 </div>

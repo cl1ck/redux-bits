@@ -19,11 +19,9 @@ export const createMapStateToProps = (name, selectors = {}) => (state, { selecto
 
     // bit selectors receive the bit state as first parameter
     const selectedState = selectors[selector](bitState, state);
-    if (typeof selectedState !== 'object') {
-      return {
-        [selector]: selectedState,
-      };
-    }
+    return {
+      [selector]: selectedState,
+    };
     return selectedState;
   } else if (typeof selector === 'function') {
     // custom selector receive global state as first parameter
