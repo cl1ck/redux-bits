@@ -7,8 +7,9 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      - NODE_ENV: development
-
+      PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+      NODE_ENV: test
+    
     steps:
       - checkout
       - run: yarn
