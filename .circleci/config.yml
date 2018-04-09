@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:9.5
+      - image: circleci/node:6.2
 
     working_directory: ~/repo
 
@@ -11,6 +11,5 @@ jobs:
 
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn add babel-core
+      - run: yarn
       - run: yarn test
