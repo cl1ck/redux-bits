@@ -3,8 +3,11 @@ jobs:
   build:
     docker:
       - image: circleci/node:9.5
-      
+
     working_directory: ~/repo
+
+    environment:
+      - NODE_ENV: development
 
     steps:
       - checkout
@@ -20,5 +23,5 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       - run: yarn test
