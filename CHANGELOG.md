@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.0.2] - 2018-04-09
+
+### Removed
+
+- ES module export.
+
 ## [1.0.1] - 2018-04-06
 
 ### Changed
