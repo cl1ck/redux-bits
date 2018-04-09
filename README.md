@@ -1,4 +1,4 @@
-# redux-bits [![CircleCI](https://circleci.com/gh/cl1ck/redux-bits.svg?style=svg)](https://circleci.com/gh/cl1ck/redux-bits)
+# redux-bits [![npm version](https://badge.fury.io/js/redux-bits.svg)](https://badge.fury.io/js/redux-bits) [![CircleCI](https://circleci.com/gh/cl1ck/redux-bits.svg?style=svg)](https://circleci.com/gh/cl1ck/redux-bits)
 
 A slightly opiniated redux framework with the goal to reduce boilerplate and to modularize
 application logic.
