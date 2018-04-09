@@ -1,4 +1,4 @@
-# redux-bits
+# redux-bits ![npm](https://img.shields.io/npm/v/npm.svg) [![CircleCI](https://circleci.com/gh/cl1ck/redux-bits.svg?style=svg)](https://circleci.com/gh/cl1ck/redux-bits)
 
 A slightly opiniated redux framework with the goal to reduce boilerplate and to modularize
 application logic.
