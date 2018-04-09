@@ -6,10 +6,16 @@ jobs:
 
     working_directory: ~/repo
 
+    dependencies:
+      override:
+        - yarn
+      cache_directories:
+        - ~/.cache/yarn
+
     environment:
-      PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-      NODE_ENV: test
-    
+      - PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+      - NODE_ENV: test
+
     steps:
       - checkout
       - run: yarn
