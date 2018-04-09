@@ -1,6 +1,6 @@
 {
   "name": "redux-bits",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "modular redux bits",
   "keywords": [
     "modular",
@@ -10,7 +10,6 @@
     "render props"
   ],
   "main": "dist/index.js",
-  "module": "src/index.js",
   "sideEffects": false,
   "repository": "https://github.com/cl1ck/redux-bits.git",
   "author": "Michel Hofmann <info@cl1ck0ne.net>",

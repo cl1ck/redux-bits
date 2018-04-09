@@ -5,9 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createMapStateToProps = undefined;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; // import React from 'react';
-
-
 var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
@@ -22,7 +19,8 @@ var _immer2 = _interopRequireDefault(_immer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // import React from 'react';
+
 
 var createMapStateToProps = exports.createMapStateToProps = function createMapStateToProps(name) {
   var selectors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -45,9 +43,7 @@ var createMapStateToProps = exports.createMapStateToProps = function createMapSt
 
       // bit selectors receive the bit state as first parameter
       var selectedState = selectors[selector](bitState, state);
-      if ((typeof selectedState === 'undefined' ? 'undefined' : _typeof(selectedState)) !== 'object') {
-        return _defineProperty({}, selector, selectedState);
-      }
+      return _defineProperty({}, selector, selectedState);
       return selectedState;
     } else if (typeof selector === 'function') {
       // custom selector receive global state as first parameter
