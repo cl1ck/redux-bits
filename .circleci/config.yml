@@ -6,17 +6,11 @@ jobs:
 
     working_directory: ~/repo
 
-    dependencies:
-      override:
-        - yarn
-      cache_directories:
-        - ~/.cache/yarn
-
     environment:
-      - PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-      - NODE_ENV: test
+      - NODE_ENV: development
 
     steps:
       - checkout
-      - run: yarn
+      - run: yarn install
+      - run: yarn add babel-core
       - run: yarn test
