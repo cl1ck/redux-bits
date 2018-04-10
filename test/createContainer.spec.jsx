@@ -86,7 +86,10 @@ describe('createContainer', () => {
     component.find('#test').simulate('click');
     const executedActions = store.getActions();
     expect(executedActions).toHaveLength(1);
-    expect(executedActions[0]).toEqual(actions.testAction(true));
+    expect(executedActions[0]).toEqual({
+      type: 'test/TEST_ACTION',
+      payload: true,
+    });
   });
 
   it('accepts bit selectors', () => {

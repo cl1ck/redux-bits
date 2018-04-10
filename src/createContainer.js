@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import produce from 'immer';
+import { buildActionCreators } from './actions';
 
 export const createMapStateToProps = (name, selectors = {}) => (state, { selector }) => {
   const bitSelector = state => state[name];
@@ -36,9 +37,10 @@ const createContainer = (name, actions, selectors = {}) => {
   Container.propTypes = {
     children: PropTypes.func.isRequired,
   };
-  
+
+  const actionCreators = buildActionCreators(name, actions);
   const mapStateToProps = createMapStateToProps(name, selectors);
-  const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+  const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
   return connect(
     mapStateToProps,

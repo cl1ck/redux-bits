@@ -17,6 +17,8 @@ var _immer = require('immer');
 
 var _immer2 = _interopRequireDefault(_immer);
 
+var _actions = require('./actions');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // import React from 'react';
@@ -63,9 +65,10 @@ var createContainer = function createContainer(name, actions) {
     children: _propTypes2.default.func.isRequired
   };
 
+  var actionCreators = (0, _actions.buildActionCreators)(name, actions);
   var mapStateToProps = createMapStateToProps(name, selectors);
   var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return (0, _redux.bindActionCreators)(actions, dispatch);
+    return (0, _redux.bindActionCreators)(actionCreators, dispatch);
   };
 
   return (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Container);

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.0.3] - 2018-04-10
+
+### Fixed
+
+- Action creators where not created correctly.
+
 ## [1.0.2] - 2018-04-09
 
 ### Removed
