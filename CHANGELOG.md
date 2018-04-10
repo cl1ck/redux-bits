@@ -2,11 +2,12 @@
 
 ## [Unreleased]
 
-## [1.0.3] - 2018-04-10
+## [2.0.4] - 2018-04-10
 
 ### Fixed
 
-- Action creators where not created correctly.
+- Action creators were not created correctly.
+- Reducers were ignoring actions without payload.
 
 ## [1.0.2] - 2018-04-09
 

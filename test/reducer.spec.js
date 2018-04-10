@@ -67,8 +67,11 @@ describe('createBitReducer', () => {
       type: 'someOtherType',
       payload: true,
     };
-    const reducedState = reducer(testBit.state, invalidAction);
-    expect(reducedState).toBe(testBit.state);
+    const invalidAction2 = {
+      type: 'withoutPayload',
+    };
+    expect(reducer(testBit.state, invalidAction)).toBe(testBit.state);
+    expect(reducer(testBit.state, invalidAction2)).toBe(testBit.state);
   });
 });
 

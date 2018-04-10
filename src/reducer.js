@@ -6,8 +6,9 @@ export const createBitReducer = (name, reducers, initialState = {}) => {
   const actions = Object.keys(actionTypes).reduce((acc, actionType) => Object.assign(acc, {
     [actionTypes[actionType]]: actionType,
   }), {});
+
   return (state = initialState, action) => produce(state, (draft) => {
-    if (action.type && action.payload && actions[action.type] && reducers[actions[action.type]]) {
+    if (action.type && actions[action.type] && reducers[actions[action.type]]) {
       reducers[actions[action.type]](draft, action.payload);
     }
   });

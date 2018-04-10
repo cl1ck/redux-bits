@@ -1,4 +1,4 @@
-import { combineBitsAndReducers } from '../src/index';
+import { combineBitsAndReducers } from '../src/createStore';
 import createTestBit from './createTestBit';
 
 describe('combineBitsAndReducers', () => {

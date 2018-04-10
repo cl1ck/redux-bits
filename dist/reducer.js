@@ -22,11 +22,12 @@ var createBitReducer = exports.createBitReducer = function createBitReducer(name
   var actions = Object.keys(actionTypes).reduce(function (acc, actionType) {
     return Object.assign(acc, _defineProperty({}, actionTypes[actionType], actionType));
   }, {});
+
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
     return (0, _immer2.default)(state, function (draft) {
-      if (action.type && action.payload && actions[action.type] && reducers[actions[action.type]]) {
+      if (action.type && actions[action.type] && reducers[actions[action.type]]) {
         reducers[actions[action.type]](draft, action.payload);
       }
     });
