@@ -16,13 +16,6 @@ const validateBit = (bit) => {
     }
   });
 
-  // there must be a reducer for each action
-  Object.keys(bit.actions).forEach((actionName) => {
-    if (!Object.keys(bit.reducers).includes(actionName)) {
-      throw new Error(`Bit is missing a reducer for action ${actionName}`);
-    }
-  });
-
   if (typeof bit.name !== 'string') {
     throw new Error('Bit name must be a valid string');
   }

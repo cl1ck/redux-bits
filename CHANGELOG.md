@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [2.0.5] - 2018-04-13
+
+- Bits no longer must export a reducer for each action (makes sense in combination with several middlewares).
+
 ## [2.0.4] - 2018-04-10
 
 ### Fixed

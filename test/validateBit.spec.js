@@ -8,7 +8,7 @@ describe('validateBit', () => {
     expect(() => validateBit(bit)).not.toThrow();
   });
 
-  it('does no validate invalid bits', () => {
+  it('does not validate invalid bits', () => {
     const invalid1 = createTestBit('invalid1');
     delete invalid1.state;
     expect(() => validateBit(invalid1)).toThrow();
@@ -16,9 +16,5 @@ describe('validateBit', () => {
     const invalid2 = createTestBit('invalid2');
     invalid2.name = ['test'];
     expect(() => validateBit(invalid2)).toThrow();
-
-    const invalid3 = createTestBit('invalid3');
-    invalid3.reducers = {};
-    expect(() => validateBit(invalid3)).toThrow();
   });
 });
