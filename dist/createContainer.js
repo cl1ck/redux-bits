@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createMapStateToProps = undefined;
+exports.createComponentContainer = exports.createContainer = exports.createMapStateToProps = undefined;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
@@ -21,8 +25,9 @@ var _actions = require('./actions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // import React from 'react';
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var createMapStateToProps = exports.createMapStateToProps = function createMapStateToProps(name) {
   var selectors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -55,15 +60,26 @@ var createMapStateToProps = exports.createMapStateToProps = function createMapSt
   };
 };
 
-var createContainer = function createContainer(name, actions) {
-  var selectors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+var FAACContainer = function FAACContainer(_ref3) {
+  var children = _ref3.children,
+      rest = _objectWithoutProperties(_ref3, ['children']);
 
-  var Container = function Container(props) {
-    return props.children(props);
-  };
-  Container.propTypes = {
-    children: _propTypes2.default.func.isRequired
-  };
+  return children(rest);
+};
+FAACContainer.propTypes = {
+  children: _propTypes2.default.func.isRequired
+};
+
+var ComponentContainer = function ComponentContainer(_ref4) {
+  var Component = _ref4.Component,
+      rest = _objectWithoutProperties(_ref4, ['Component']);
+
+  return _react2.default.createElement(Component, rest);
+};
+
+var createContainer = exports.createContainer = function createContainer(name, actions) {
+  var selectors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var Container = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : FAACContainer;
 
   var actionCreators = (0, _actions.buildActionCreators)(name, actions);
   var mapStateToProps = createMapStateToProps(name, selectors);
@@ -74,4 +90,7 @@ var createContainer = function createContainer(name, actions) {
   return (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Container);
 };
 
-exports.default = createContainer;
+var createComponentContainer = exports.createComponentContainer = function createComponentContainer(name, actions) {
+  var selectors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  return createContainer(name, actions, selectors, ComponentContainer);
+};

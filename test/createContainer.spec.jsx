@@ -1,5 +1,9 @@
 import React from 'react';
-import createContainer, { createMapStateToProps } from '../src/createContainer';
+import {
+  createContainer,
+  createMapStateToProps,
+  createComponentContainer
+} from '../src/createContainer';
 import createTestBit from './createTestBit';
 
 const testBit = createTestBit('test');
@@ -137,5 +141,39 @@ describe('createContainer', () => {
       store,
     );
     expect(component.find('#test').text()).toBe('test');
+  });
+});
+
+describe('createComponentContainer', () => {
+  it('provides state to Component prop', () => {
+    const store = createMockStore(testState);
+    const Container = createComponentContainer(name, actions);
+    const TextComponent = ({ text }) => (
+      <div id="test">{text}</div>
+    );
+    const component = mountWithStore(
+      <Container Component={TextComponent} />,
+      store,
+    );
+    expect(component.find('#test').text()).toBe('test');
+  });
+
+  it('provides action creators to Component prop', () => {
+    const store = createMockStore(testState);
+    const Container = createComponentContainer(name, actions);
+    const ButtonComponent = ({ testAction }) => (
+      <button id="test" onClick={testAction(true)} />
+    );
+    const component = mountWithStore(
+      <Container Component={ButtonComponent} />,
+      store,
+    );
+    component.find('#test').simulate('click');
+    const executedActions = store.getActions();
+    expect(executedActions).toHaveLength(1);
+    expect(executedActions[0]).toEqual({
+      type: 'test/TEST_ACTION',
+      payload: true,
+    });
   });
 });

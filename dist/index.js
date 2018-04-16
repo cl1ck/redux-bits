@@ -9,7 +9,13 @@ var _createContainer = require('./createContainer');
 Object.defineProperty(exports, 'createContainer', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_createContainer).default;
+    return _createContainer.createContainer;
+  }
+});
+Object.defineProperty(exports, 'createComponentContainer', {
+  enumerable: true,
+  get: function get() {
+    return _createContainer.createComponentContainer;
   }
 });
 
@@ -30,5 +36,3 @@ Object.defineProperty(exports, 'createStore', {
     return _createStore.createStore;
   }
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

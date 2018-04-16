@@ -2,7 +2,15 @@
 
 ## [Unreleased]
 
+## [2.1.5] - 2018-04-16
+
+### Added
+
+- In addition to the function as a child container, `redux-bits` provides a `render prop Component` container.
+
 ## [2.0.5] - 2018-04-13
+
+### Fixed
 
 - Bits no longer must export a reducer for each action (makes sense in combination with several middlewares).
 

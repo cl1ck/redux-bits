@@ -79,7 +79,7 @@ Export state container as default:
 
 ```javascript
 // ./bits/myTestBit.js
-import { actionTypes } from 'redux-bits';
+import { createContainer } from 'redux-bits';
 // ...
 
 export default createContainer(name, actions, selector /*optional*/);
@@ -113,7 +113,7 @@ export default createStore(config);
 ## Usage with React
 
 To use bits with react, export the state container from the bit (see above).
-You may then access the bit state using render props:
+The default state container accepts a function as a child that receives the bit's state as parameter:
 
 ```javascript
 // ./testComponent.js
@@ -129,6 +129,42 @@ export default () => (
       <a onClick={fooAction}>Foo action</a>
     )}
   </MyTestBit>
+</div>
+);
+
+```
+
+### Alternative state container
+
+The default state container follows the function as a child pattern.
+In addition, `redux-bits` provides an alternative `render prop Component` pattern,
+for those who don't like functions as a child.
+
+Using this approach makes testing the component much easier.
+
+```javascript
+// ./bits/myTestBit.js
+import { createContainer } from 'redux-bits';
+// ...
+
+export default createComponentContainer(name, actions, selector /*optional*/);
+
+```
+
+```javascript
+// ./testComponent.js
+import React from 'react'
+import MyTestBit from 'bits/myTestBit'
+
+export const TestRenderer = ({ foo, bar, fooAction }) => (
+  <p>Foo: {foo}</p>
+  <p>Bar: {bar}</p>
+  <a onClick={fooAction}>Foo action</a>
+);
+
+export default () => (
+<div>
+  <MyTestBit Component={TestRenderer} />
 </div>
 );
 

@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -32,12 +32,16 @@ export const createMapStateToProps = (name, selectors = {}) => (state, { selecto
     'selector or a selector function!');
 };
 
-const createContainer = (name, actions, selectors = {}) => {
-  const Container = props => props.children(props);
-  Container.propTypes = {
-    children: PropTypes.func.isRequired,
-  };
+const FAACContainer = ({ children, ...rest }) => children(rest);
+FAACContainer.propTypes = {
+  children: PropTypes.func.isRequired,
+};
 
+const ComponentContainer = ({ Component, ...rest}) => (
+  <Component {...rest} />
+);
+
+export const createContainer = (name, actions, selectors = {}, Container = FAACContainer) => {
   const actionCreators = buildActionCreators(name, actions);
   const mapStateToProps = createMapStateToProps(name, selectors);
   const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
@@ -48,4 +52,5 @@ const createContainer = (name, actions, selectors = {}) => {
   )(Container);
 };
 
-export default createContainer;
+export const createComponentContainer = (name, actions, selectors = {}) =>
+  createContainer(name, actions, selectors, ComponentContainer);
